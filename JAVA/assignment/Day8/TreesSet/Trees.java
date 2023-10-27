@@ -9,38 +9,40 @@ public class Trees {
         InfowayStudents i4=new InfowayStudents(202, "Pune", "Cdac", "Roopali", 21, "233423123",9);
         InfowayStudents i5=new InfowayStudents(202, "Pune", "Cdac", "Shikha", 21, "233423123",11);
         InfowayStudents i6=new InfowayStudents(202, "Pune", "Cdac", "Tejaswasni", 21, "233423123",23);
+        InfowayStudents i7=new InfowayStudents(202, "Pune", "Cdac", "Jyothsna", 21, "233423123",02);
 
-        TreeSet<InfowayStudents> ts=new TreeSet<>();
+         TreeSet<InfowayStudents> ts=new TreeSet<>(new SortById());
         ts.add(i1);
         ts.add(i2);
         ts.add(i3);
         ts.add(i4);
         ts.add(i5);
         ts.add(i6);
+        ts.add(i7);
 
         for(InfowayStudents i:ts){
             System.out.println("ID "+i.getID()+" Name "+i.getName()+" Age "+i.getAge()+" Phone "+i.getPhone());
         }
 
-        // TreeMap<Integer,InfowayStudents> tm=new TreeMap<>();
-        // al.add(i1);
-        // al.add(i2);
-        // al.add(i3);
-        // al.add(i4);
-        // al.add(i5);
-        // al.add(i6);
-    //     tm.put(1,i1);
-    //     tm.put(2,i2);
-    //     tm.put(3,i3);
-    //     tm.put(4,i4);
-    //     tm.put(5,i5);
-    //     tm.put(6,i6);
-    //    for(Map.Entry<Integer,InfowayStudents>entry: tm.entrySet()){
-    //         int key=entry.getKey();
-    //         InfowayStudents val=entry.getValue();
-    //         System.out.println("S.no."+key+" Name: "+val.getName()+" Age "+val.getAge()+" Phone "+val.getPhone());
-    //         System.out.println(" Center code "+val.getCenter_code()+" Course opted "+val.getCourse_name()+" location "+val.getLocation());
-    //    }
+       /*  TreeMap<Integer,InfowayStudents> tm=new TreeMap<>();
+       /*  al.add(i1);
+        al.add(i2);
+        al.add(i3);
+        al.add(i4);
+        al.add(i5);
+        al.add(i6); */
+        /*tm.put(1,i1);
+        tm.put(2,i2);
+        tm.put(3,i3);
+        tm.put(4,i4);
+        tm.put(5,i5);
+        tm.put(6,i6);
+       for(Map.Entry<Integer,InfowayStudents>entry: tm.entrySet()){
+            int key=entry.getKey();
+            InfowayStudents val=entry.getValue();
+            System.out.println("S.no."+key+" Name: "+val.getName()+" Age "+val.getAge()+" Phone "+val.getPhone());
+            System.out.println(" Center code "+val.getCenter_code()+" Course opted "+val.getCourse_name()+" location "+val.getLocation());
+       } */
  }
 }
 class Infoway  {  
@@ -83,7 +85,7 @@ class Infoway  {
 
 
 }
-class InfowayStudents extends Infoway implements Comparable<Infoway> {
+class InfowayStudents extends Infoway {
     private String name;
     private int age;
     private String phone;
@@ -131,17 +133,13 @@ class InfowayStudents extends Infoway implements Comparable<Infoway> {
         System.out.println("Name "+getName()+" Age "+getAge()+" Phone "+getPhone());
         System.out.println("Course name "+getCourse_name()+" Center code "+getCenter_code()+" location "+getLocation());
     }
+}
+class SortById implements Comparator<InfowayStudents>{
 
     @Override
-    public int compareTo(Infoway o) {
-    if (id > getID()) {
-        return 1;
-    } else if (id < getID()) {
-        return -1;
-    } else {
-        return 0;
+    public int compare(InfowayStudents o1, InfowayStudents o2) {
+        // TODO Auto-generated method stub
+        return o1.getID()-o2.getID();
     }
-    
 
-}
 }
